@@ -1,0 +1,59 @@
+We have uses ->
+
+    >> gsap -> for scrolling animations
+    >> styles components -> Global CSs implementation
+
+    >> gltfjsx : pmndrs/gltfjsx         -> This is a Github repo that is used to convert the Donwloade 3D models/ images to HSX format -> which will be easier to then be used in React type frameworks
+
+
+    >> Pmndrs.docs         -> { docs.pmnd.rs }   -> This contains all the helper function used to do tasks with { fiber/drie }   -> Three.js
+
+
+
+
+
+
+import React from 'react'
+import styled from 'styled-components';
+
+import { Canvas } from "@react-three/fiber";
+import { Environment, OrbitControls } from "@react-three/drei";
+
+import { Model } from "../assets/3D-Model/Scene"
+
+
+
+const Container = styled.div`
+    width: 100vw;
+    height: 100vh;
+
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    background-color: transparent; 
+`
+
+const PhoneModel = () => {
+    return (
+        <Container>
+            {/* 3D Modeeling of iphone */}
+            <Canvas>
+                <ambientLight intensity={1.25}/>
+                <directionalLight position={0.4}/>
+                        {/* We can also pass an arry of directional lights i.e, [1,0,0], etc */}
+
+                <mesh>
+                    {/* Basic Class that represents adding Polygon Models  */}
+                    <boxGeometry />
+                    <meshStandardMaterial color="red"/>
+                </mesh>
+
+                <Model/>
+                <Environment preset='night'/>
+                <OrbitControls/>
+            </Canvas>
+        </Container>
+    )
+}
+
+export default PhoneModel
